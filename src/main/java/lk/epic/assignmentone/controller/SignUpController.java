@@ -17,7 +17,7 @@ public class SignUpController {
 
     @PostMapping
     public ResponseUtil userRegistration(@RequestBody UserDTO dto){
-        System.out.println(dto);
+        //System.out.println(dto);
         return service.saveUser(dto);
 
     }
