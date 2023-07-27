@@ -17,8 +17,8 @@ public class User {
 
     @Id
     private String email;
-    private String fName;
-    private String lName;
+    private String firstname;
+    private String lastname;
     private String password;
 
 }
