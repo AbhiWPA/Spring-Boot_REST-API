@@ -41,7 +41,7 @@ public class MovieServiceIMPL implements MovieService {
             movieRepo.deleteById(imdb);
             return new ResponseUtil("00", "Delete Success", imdb);
         } else {
-            return new ResponseUtil("02", "No Suh Movie Exists", imdb);
+            return new ResponseUtil("02", "No Such Movie Exists", imdb);
         }
 
     }
@@ -52,7 +52,7 @@ public class MovieServiceIMPL implements MovieService {
            movieRepo.save(mapper.map(dto, Movie.class));
             return new ResponseUtil("00", "Update Success", dto);
         } else {
-            return new ResponseUtil("02", "No Suh Movie Exists", dto);
+            return new ResponseUtil("02", "No Such Movie Exists", dto);
         }
     }
 

@@ -7,6 +7,8 @@ import lk.epic.assignmentone.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+
 @RestController
 @RequestMapping("/api/v1/movie")
 @CrossOrigin
@@ -14,6 +16,11 @@ public class MovieController {
 
     @Autowired
     private MovieService service;
+
+    @GetMapping("/getAll")
+    public ArrayList<MovieDTO> getAllMovies(){
+        return service.getAllMovies();
+    }
 
     @PostMapping("/add")
     public ResponseUtil saveMovie(@RequestBody MovieDTO dto){
@@ -25,6 +32,11 @@ public class MovieController {
     @PutMapping("/update")
     public ResponseUtil updateMovie(@RequestBody MovieDTO dto){
         return service.updateMovie(dto);
+    }
+
+    @DeleteMapping("/delete/{imdb}")
+    public ResponseUtil deleteMovie(@PathVariable String imdb){
+        return service.deleteMovie(imdb);
     }
 
 }
