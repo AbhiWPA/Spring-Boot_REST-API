@@ -2,6 +2,7 @@ package lk.epic.assignmentone.config;
 
 import com.mysql.cj.protocol.x.XAuthenticationProvider;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -11,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import javax.servlet.Filter;
 
@@ -19,6 +21,7 @@ import javax.servlet.Filter;
 @RequiredArgsConstructor
 public class SecurityConfiguration {
 
+    @Autowired
     private JwtAuthenticationFilter jwtAuthFilter;
     private final AuthenticationProvider authenticationProvider;
 
@@ -28,7 +31,7 @@ public class SecurityConfiguration {
                 .csrf()
                 .disable()
                 .authorizeHttpRequests()
-                .requestMatchers()
+                .requestMatchers(new AntPathRequestMatcher("/api/v1/signUp/**"))
                 .permitAll()
                 .anyRequest()
                 .authenticated()

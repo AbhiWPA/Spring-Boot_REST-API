@@ -6,6 +6,7 @@ import lk.epic.assignmentone.entity.User;
 import lk.epic.assignmentone.repo.LoginRepo;
 import lk.epic.assignmentone.service.LoginService;
 import lk.epic.assignmentone.util.ResponseUtil;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,7 @@ import javax.transaction.Transactional;
 
 @Service
 @Transactional
+@RequiredArgsConstructor
 public class LoginServiceIMPL implements LoginService {
 
     @Autowired
