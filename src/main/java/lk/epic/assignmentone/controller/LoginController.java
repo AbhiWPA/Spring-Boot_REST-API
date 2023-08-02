@@ -18,7 +18,7 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
-    @PostMapping("/logIN")
+    @PostMapping
     public ResponseEntity<ResponseUtil> getUserByEmailAndPswd(@RequestBody LoginDTO dto){
         ResponseUtil login = loginService.getUserById(dto);
 

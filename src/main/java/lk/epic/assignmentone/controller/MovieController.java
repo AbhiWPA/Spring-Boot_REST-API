@@ -1,5 +1,6 @@
 package lk.epic.assignmentone.controller;
 
+import lk.epic.assignmentone.config.JwtAuthenticationFilter;
 import lk.epic.assignmentone.dto.MovieDTO;
 import lk.epic.assignmentone.dto.UserDTO;
 import lk.epic.assignmentone.service.MovieService;
@@ -16,6 +17,7 @@ public class MovieController {
 
     @Autowired
     private MovieService service;
+
 
     @GetMapping("/getAll")
     public ArrayList<MovieDTO> getAllMovies(){

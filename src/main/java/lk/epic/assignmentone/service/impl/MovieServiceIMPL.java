@@ -1,5 +1,6 @@
 package lk.epic.assignmentone.service.impl;
 
+import lk.epic.assignmentone.config.JwtAuthenticationFilter;
 import lk.epic.assignmentone.dto.MovieDTO;
 import lk.epic.assignmentone.entity.Movie;
 import lk.epic.assignmentone.entity.User;
@@ -30,8 +31,12 @@ public class MovieServiceIMPL implements MovieService {
 
     @Override
     public ResponseUtil addMovie(MovieDTO dto) {
+        boolean resval = JwtAuthenticationFilter.authMsg;
+        System.out.println(resval);
         if (movieRepo.existsById(dto.getImdb())){
             return new ResponseUtil("04","Movie allready exists",dto);
+        }else if (!resval){
+            return new ResponseUtil("03", "Not Authenticated", dto);
         }else {
             movieRepo.save(mapper.map(dto, Movie.class));
             return new ResponseUtil("00","Success",dto);
@@ -61,6 +66,8 @@ public class MovieServiceIMPL implements MovieService {
 
     @Override
     public ArrayList<MovieDTO> getAllMovies() {
+
+
         return mapper.map(movieRepo.findAll(), new TypeToken<ArrayList<MovieDTO>>() {
         }.getType());
     }
