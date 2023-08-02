@@ -10,6 +10,7 @@ import lk.epic.assignmentone.util.ResponseUtil;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -24,6 +25,8 @@ public class MovieServiceIMPL implements MovieService {
 
     @Autowired
     private ModelMapper mapper;
+
+    private AuthenticationManager authenticationManager;
 
     @Override
     public ResponseUtil addMovie(MovieDTO dto) {

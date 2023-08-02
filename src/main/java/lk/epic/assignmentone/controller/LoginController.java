@@ -1,5 +1,6 @@
 package lk.epic.assignmentone.controller;
 
+import lk.epic.assignmentone.dto.LoginDTO;
 import lk.epic.assignmentone.dto.MovieDTO;
 import lk.epic.assignmentone.dto.UserDTO;
 import lk.epic.assignmentone.service.LoginService;
@@ -17,8 +18,8 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
-    @GetMapping("/logIN")
-    public ResponseEntity<ResponseUtil> getUserByEmailAndPswd(@RequestBody UserDTO dto){
+    @PostMapping("/logIN")
+    public ResponseEntity<ResponseUtil> getUserByEmailAndPswd(@RequestBody LoginDTO dto){
         ResponseUtil login = loginService.getUserById(dto);
 
         if (login.getCode().equals("00")) {
