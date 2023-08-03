@@ -3,9 +3,7 @@ package lk.epic.assignmentone.service.impl;
 import lk.epic.assignmentone.config.JwtAuthenticationFilter;
 import lk.epic.assignmentone.dto.MovieDTO;
 import lk.epic.assignmentone.entity.Movie;
-import lk.epic.assignmentone.entity.User;
 import lk.epic.assignmentone.repo.MovieRepo;
-import lk.epic.assignmentone.repo.SignUpRepo;
 import lk.epic.assignmentone.service.MovieService;
 import lk.epic.assignmentone.util.ResponseUtil;
 import org.modelmapper.ModelMapper;
@@ -31,12 +29,8 @@ public class MovieServiceIMPL implements MovieService {
 
     @Override
     public ResponseUtil addMovie(MovieDTO dto) {
-        boolean resval = JwtAuthenticationFilter.authMsg;
-        System.out.println(resval);
         if (movieRepo.existsById(dto.getImdb())){
             return new ResponseUtil("04","Movie allready exists",dto);
-        }else if (!resval){
-            return new ResponseUtil("03", "Not Authenticated", dto);
         }else {
             movieRepo.save(mapper.map(dto, Movie.class));
             return new ResponseUtil("00","Success",dto);
@@ -73,7 +67,11 @@ public class MovieServiceIMPL implements MovieService {
     }
 
     @Override
-    public MovieDTO searchMovieByName(String title) {
-        return null;
+    public ResponseUtil searchMovieById(String imdb) {
+        if (movieRepo.existsById(imdb)) {
+            return new ResponseUtil("00", "Success", movieRepo.findById(imdb));
+        } else {
+            return new ResponseUtil("02", "No Such Movie Found", null);
+        }
     }
 }

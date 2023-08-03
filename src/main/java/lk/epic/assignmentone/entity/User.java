@@ -9,6 +9,10 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.List;
 
@@ -19,7 +23,6 @@ import java.util.List;
 @Entity
 @Builder
 public class User  implements UserDetails {
-
     @Id
     private String email;
     private String firstname;

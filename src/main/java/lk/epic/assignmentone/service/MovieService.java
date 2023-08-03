@@ -15,6 +15,6 @@ public interface MovieService {
 
     public ArrayList<MovieDTO> getAllMovies();
 
-    public MovieDTO searchMovieByName(String title);
+    public ResponseUtil searchMovieById(String imdb);
 
 }

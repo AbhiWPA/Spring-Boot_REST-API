@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/api/v1/login")
 @CrossOrigin
@@ -19,7 +21,7 @@ public class LoginController {
     private LoginService loginService;
 
     @PostMapping
-    public ResponseEntity<ResponseUtil> getUserByEmailAndPswd(@RequestBody LoginDTO dto){
+    public ResponseEntity<ResponseUtil> getUserByEmailAndPswd(@Valid @RequestBody LoginDTO dto){
         ResponseUtil login = loginService.getUserById(dto);
 
         if (login.getCode().equals("00")) {
