@@ -37,7 +37,7 @@ public class SignUpServiceIMPL implements SignUpService {
                 .lastname(dto.getLastname())
                 .email(dto.getEmail())
                 .password(passwordEncoder.encode(dto.getPassword()))
-                .role(Role.USER)
+                .role(Role.valueOf(String.valueOf(dto.getRole())))
                 .build();
 
         if (signUpRepo.existsById(dto.getEmail())){

@@ -39,26 +39,28 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         final String userEmail;
 
         if(authHeader == null || !authHeader.startsWith("Bearer ")){
-//            filterChain.doFilter(request, response);
+            filterChain.doFilter(request, response);
+//            return;
+//            String urlPrefix= "/app/api/v1/";
+//            String requestURI = request.getRequestURI();
+//
+//            System.out.println(requestURI);
 
-            String urlPrefix= "/app/api/v1/";
-            String requestURI = request.getRequestURI();
 
-            System.out.println(requestURI);
 
-            if(requestURI.equals(urlPrefix + "login") || requestURI.equals(urlPrefix + "signUp/register")) {
-                filterChain.doFilter(request, response);
-            } else {
-                response.setStatus(HttpStatus.UNAUTHORIZED.value());
-                response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-
-                // Serialize the custom response to JSON
-                ObjectMapper objectMapper = new ObjectMapper();
-                String jsonResponse = objectMapper.writeValueAsString(new ResponseUtil("03", "Not Authorized", null));
-
-                // Write the JSON response to the response body
-                response.getWriter().write(jsonResponse);
-            }
+//            if(requestURI.equals(urlPrefix + "login") || requestURI.equals(urlPrefix + "signUp/register")) {
+//                filterChain.doFilter(request, response);
+//            } else {
+//                response.setStatus(HttpStatus.FORBIDDEN.value());
+//                response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+//
+//                // Serialize the custom response to JSON
+//                ObjectMapper objectMapper = new ObjectMapper();
+//                String jsonResponse = objectMapper.writeValueAsString(new ResponseUtil("03", "Not Authorized", null));
+//
+//                // Write the JSON response to the response body
+//                response.getWriter().write(jsonResponse);
+//            }
             return;
         }
         jwt = authHeader.substring(7);

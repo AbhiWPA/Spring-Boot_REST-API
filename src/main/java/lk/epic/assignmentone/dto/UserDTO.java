@@ -1,10 +1,13 @@
 package lk.epic.assignmentone.dto;
 
+import lk.epic.assignmentone.entity.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -36,5 +39,7 @@ public class UserDTO {
     @Size(min = 5, max = 10, message = "Password length must be between 5 and 10 characters")
     private String password;
 
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
 }

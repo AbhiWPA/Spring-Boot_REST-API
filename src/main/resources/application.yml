@@ -24,8 +24,17 @@ spring:
     generate-ddl: true
     database-platform: org.hibernate.dialect.MySQL8Dialect
 
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
 
 server:
   servlet:
     context-path: /app
   port: 9000
+
+  springfox:
+    documentation:
+      swagger-ui:
+        enable: true

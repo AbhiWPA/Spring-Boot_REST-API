@@ -1,5 +1,6 @@
 package lk.epic.assignmentone.controller;
 
+import io.swagger.annotations.Api;
 import lk.epic.assignmentone.dto.LoginDTO;
 import lk.epic.assignmentone.dto.MovieDTO;
 import lk.epic.assignmentone.dto.UserDTO;
@@ -15,6 +16,7 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/api/v1/login")
 @CrossOrigin
+@Api(value = "LogInController", tags = "Login Controller API")
 public class LoginController {
 
     @Autowired

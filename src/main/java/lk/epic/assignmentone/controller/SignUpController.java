@@ -1,5 +1,6 @@
 package lk.epic.assignmentone.controller;
 
+import io.swagger.annotations.Api;
 import lk.epic.assignmentone.dto.UserDTO;
 import lk.epic.assignmentone.service.SignUpService;
 import lk.epic.assignmentone.util.AuthenticationResponse;
@@ -14,6 +15,7 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/api/v1/signUp")
 @CrossOrigin
+@Api(value = "SignUpController", tags = "SignUp Controller API")
 public class SignUpController {
 
     @Autowired
